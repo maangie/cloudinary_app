@@ -13,7 +13,7 @@ gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 gem 'coffee-rails', '~> 4.1.0' # Use CoffeeScript for .coffee assets and views
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails' # Use jquery as the JavaScript library
 
@@ -36,7 +36,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'twitter-bootstrap-rails'
 gem 'rails-i18n'
+gem 'carrierwave'
+gem 'cloudinary'
 
 group :development, :test do
   gem 'annotate'
