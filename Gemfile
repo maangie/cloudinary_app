@@ -40,6 +40,7 @@ gem 'twitter-bootstrap-rails'
 gem 'rails-i18n'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'simple_form'
 
 group :development, :test do
   gem 'annotate'
