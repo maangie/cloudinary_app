@@ -1,45 +1,13 @@
-<%= form_for @photo, :html => { :class => "form-horizontal photo" } do |f| %>
+<%= simple_form_for(@photo) do |f| %>
+  <%= f.error_notification %>
 
-    <% if @photo.errors.any? %>
-    <div id="error_expl" class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@photo.errors.count, "error") %> prohibited this photo from being saved:</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-        <% @photo.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
-
-  <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :title, :class => 'form-control' %>
-    </div>
-    <%= error_span(@photo[:title]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :image, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :image, :class => 'form-control' %>
-    </div>
-    <%= error_span(@photo[:image]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :bytes, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :bytes, :class => 'form-control' %>
-    </div>
-    <%= error_span(@photo[:bytes]) %>
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :image, as: :file %>
+    <%= f.input :bytes %>
   </div>
 
-
-  <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            photos_path, :class => 'btn btn-default' %>
-
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
 <% end %>
