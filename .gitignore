@@ -35,3 +35,6 @@ bower.json
 
 # Ignore upload images
 /public/uploads
+
+# environment variables
+.env

@@ -39,3 +39,7 @@ ja:
 
   ransack:
     search: 検索する
+
+  created: "%{model}を作成しました。"
+  updated: "%{model}を更新しました。"
+  destroyed: "%{model}を削除しました。"
