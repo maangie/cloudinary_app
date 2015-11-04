@@ -7,7 +7,8 @@
   <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
   <dd><%= @photo.title %></dd>
   <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
-  <dd><%= @photo.image %></dd>
+  <dd><%= image_tag @photo.image %>
+  </dd>
   <dt><strong><%= model_class.human_attribute_name(:bytes) %>:</strong></dt>
   <dd><%= @photo.bytes %></dd>
 </dl>
