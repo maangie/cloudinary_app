@@ -1,13 +1,12 @@
-<%= simple_form_for(@photo) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @photo, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :title %>
+  <%= error_span(@photo[:title]) %>
+  <%= f.input :image %>
+  <%= error_span(@photo[:image]) %>
+  <%= f.input :bytes %>
+  <%= error_span(@photo[:bytes]) %>
 
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :image, as: :file %>
-    <%= f.input :bytes %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                photos_path, :class => 'btn btn-default' %>
 <% end %>
