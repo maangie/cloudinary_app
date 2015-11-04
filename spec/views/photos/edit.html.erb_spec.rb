@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "photos/edit", type: :view do
   before(:each) do
-    @photo = assign(:photo, Photo.create!(
-      :title => "MyString",
-      :image => "MyString",
-      :bytes => 1
-    ))
+    @photo = FactoryGirl.create(:photo)
   end
 
   it "renders the edit photo form" do
