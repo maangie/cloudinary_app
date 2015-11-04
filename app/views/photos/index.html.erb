@@ -18,7 +18,10 @@
       <tr>
         <td><%= link_to photo.id, photo_path(photo) %></td>
         <td><%= photo.title %></td>
-        <td><%= photo.image %></td>
+        <td>
+          <%= cl_image_tag(photo.image,
+                           crop: 'fill', radius: 10, height: 150, width: 150) %>
+        </td>
         <td><%= photo.bytes %></td>
         <td><%=l photo.created_at %></td>
         <td>
