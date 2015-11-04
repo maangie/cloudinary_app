@@ -1,10 +1,10 @@
-<%= simple_form_for @photo, :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for photo, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :title %>
-  <%= error_span(@photo[:title]) %>
+  <%= error_span(photo[:title]) %>
   <%= f.input :image %>
-  <%= error_span(@photo[:image]) %>
-  <%= f.input :bytes %>
-  <%= error_span(@photo[:bytes]) %>
+  <%= error_span(photo[:image]) %>
+  <%= f.input :bytes, readonly: true %>
+  <%= error_span(photo[:bytes]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

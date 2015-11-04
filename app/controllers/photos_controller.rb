@@ -28,11 +28,14 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
+        format.html { redirect_to @photo, notice: t(:created, model: 'Photo') }
         format.json { render :show, status: :created, location: @photo }
       else
         format.html { render :new }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
+
+        format.json do
+          render json: @photo.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -42,11 +45,14 @@ class PhotosController < ApplicationController
   def update
     respond_to do |format|
       if @photo.update(photo_params)
-        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
+        format.html { redirect_to @photo, notice: t(:updated, model: 'Photo') }
         format.json { render :show, status: :ok, location: @photo }
       else
         format.html { render :edit }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
+
+        format.json do
+          render json: @photo.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -56,7 +62,10 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
     respond_to do |format|
-      format.html { redirect_to photos_url, notice: 'Photo was successfully destroyed.' }
+      format.html do
+        redirect_to photos_url, notice: t(:destroyed, model: 'Photo')
+      end
+
       format.json { head :no_content }
     end
   end
@@ -67,8 +76,11 @@ class PhotosController < ApplicationController
       @photo = Photo.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary internet, only allow the
+    # white list through.
     def photo_params
-      params.require(:photo).permit(:title, :image, :bytes)
+      p = params.require(:photo).permit(:title, :image)
+      p[:bytes] = p[:image].size if p[:image]
+      p
     end
 end
