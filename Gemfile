@@ -59,6 +59,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'ffaker'
   gem 'timecop'
+  gem 'factory_girl_rails', require: false
 
   # Spring speeds up development by keeping your application running
   # in the background. Read more: https://github.com/rails/spring
@@ -78,5 +79,4 @@ group :test do
   gem 'shoulda'
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'factory_girl_rails'
 end
