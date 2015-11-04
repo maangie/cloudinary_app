@@ -39,6 +39,7 @@ gem 'rails-i18n'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'simple_form'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'sqlite3' # Use sqlite3 as the database for Active Record
