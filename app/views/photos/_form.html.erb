@@ -3,7 +3,7 @@
   <%= error_span(photo[:title]) %>
   <%= f.input :image %>
   <%= error_span(photo[:image]) %>
-  <%= f.input :bytes %>
+  <%= f.input :bytes, readonly: true %>
   <%= error_span(photo[:bytes]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
