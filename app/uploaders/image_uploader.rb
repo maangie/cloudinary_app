@@ -54,7 +54,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   if Rails.env.test?
     def public_id
-      sanitized_file.original_filename
+      sanitized_file.original_filename if path
     end
   end
 end
