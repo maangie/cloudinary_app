@@ -27,7 +27,7 @@ RSpec.describe PhotosController, type: :controller do
   end
 
   let(:invalid_attributes) do
-    FactoryGirl.attributes_for(:photo, bytes: 0)
+    FactoryGirl.attributes_for(:photo, title: '')
   end
 
   # This should return the minimal set of values that should be in the session
@@ -71,7 +71,7 @@ RSpec.describe PhotosController, type: :controller do
       it 'creates a new Photo' do
         expect do
           post :create, { photo: valid_attributes }, valid_session
-        end.to change(Photo, :count).by(1)
+        end.to change(Photo, :count).by 1
       end
 
       it 'assigns a newly created photo as @photo' do
@@ -138,7 +138,10 @@ RSpec.describe PhotosController, type: :controller do
 
       it "re-renders the 'edit' template" do
         photo = Photo.create! valid_attributes
-        put :update, { id: photo.to_param, photo: invalid_attributes }, valid_session
+
+        put :update, { id: photo.to_param, photo: invalid_attributes },
+            valid_session
+
         expect(response).to render_template('edit')
       end
     end
