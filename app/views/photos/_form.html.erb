@@ -1,5 +1,8 @@
-<%= simple_form_for photo, wrapper: :horizontal_form,
-                           wrapper_mappings: { file: :horizontal_file } do |f| %>
+<%= simple_form_for(
+  photo,
+  wrapper: :horizontal_form,
+  wrapper_mappings: { file: :horizontal_file }
+) do |f| %>
   <%= f.error_notification %>
 
   <%= f.input :title %>
@@ -7,6 +10,9 @@
   <%= f.input :bytes, readonly: true %>
 
   <%= f.button :submit, class: 'btn-primary' %>
-  <%= link_to t('.cancel', default: t("helpers.links.cancel")),
-                photos_path, class: 'btn btn-secondary' %>
+  <%= link_to(
+    t('.cancel', default: t("helpers.links.cancel")),
+    photos_path,
+    class: 'btn btn-secondary'
+  ) %>
 <% end %>
