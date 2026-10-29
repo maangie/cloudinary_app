@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe "photos/new", type: :view do
   before(:each) do
     assign(:photo, Photo.new(
-      :title => "MyString",
-      :image => "MyString",
-      :bytes => 1
+      title: "MyString",
+      image: "MyString",
+      bytes: 1
     ))
   end
 

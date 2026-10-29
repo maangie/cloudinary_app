@@ -6,7 +6,7 @@
   <%= f.input :image %>
   <%= f.input :bytes, readonly: true %>
 
-  <%= f.button :submit, :class => 'btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                photos_path, :class => 'btn btn-secondary' %>
+  <%= f.button :submit, class: 'btn-primary' %>
+  <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+                photos_path, class: 'btn btn-secondary' %>
 <% end %>

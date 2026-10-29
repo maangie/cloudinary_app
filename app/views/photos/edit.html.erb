@@ -1,8 +1,8 @@
 <%- model_class = Photo -%>
 <div class="pb-2 mb-4 border-bottom">
   <h1>
-    <%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'],
-                   :model => model_class.model_name.human.titleize %>
+    <%=t '.title', default: [:'helpers.titles.edit', 'Edit %{model}'],
+                   model: model_class.model_name.human.titleize %>
   </h1>
 </div>
 <%= render 'form', photo: @photo %>
