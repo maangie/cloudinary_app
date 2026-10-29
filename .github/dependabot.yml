@@ -1,0 +1,17 @@
+# Dependabot で gem の更新 PR を作る設定。
+version: 2
+updates:
+  - package-ecosystem: bundler
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "09:00"
+      timezone: Asia/Tokyo
+    open-pull-requests-limit: 5
+    # マイナー・パッチの更新はまとめて 1 つの PR にする。
+    groups:
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
