@@ -1,18 +1,18 @@
-# This file is copied to spec/ when you run 'rails generate rspec:install'
+# このファイルは 'rails generate rspec:install' を実行すると spec/ にコピーされる。
 require 'simplecov'
 SimpleCov.start 'rails'
 
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
-# Prevent database truncation if the environment is production
+# 本番環境のデータベースを消してしまわないように止める。
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
-# Add additional requires below this line. Rails is not loaded until this point!
+# 追加の require はこの行より下に書く。ここまで来るまで Rails は読み込まれていない！
 
 Rails.root.glob('spec/support/**/*.rb').sort_by(&:to_s).each { |f| require f }
 
-# Checks for pending migrations and applies them before tests are run.
+# 未実行のマイグレーションがあれば、テストを流す前に適用する。
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e

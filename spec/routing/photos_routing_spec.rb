@@ -1,37 +1,37 @@
 require "rails_helper"
 
 RSpec.describe PhotosController, type: :routing do
-  describe "routing" do
+  describe "ルーティング" do
 
-    it "routes to #index" do
+    it "#index に振り分ける" do
       expect(get: "/photos").to route_to("photos#index")
     end
 
-    it "routes to #new" do
+    it "#new に振り分ける" do
       expect(get: "/photos/new").to route_to("photos#new")
     end
 
-    it "routes to #show" do
+    it "#show に振り分ける" do
       expect(get: "/photos/1").to route_to("photos#show", id: "1")
     end
 
-    it "routes to #edit" do
+    it "#edit に振り分ける" do
       expect(get: "/photos/1/edit").to route_to("photos#edit", id: "1")
     end
 
-    it "routes to #create" do
+    it "#create に振り分ける" do
       expect(post: "/photos").to route_to("photos#create")
     end
 
-    it "routes to #update via PUT" do
+    it "PUT で #update に振り分ける" do
       expect(put: "/photos/1").to route_to("photos#update", id: "1")
     end
 
-    it "routes to #update via PATCH" do
+    it "PATCH で #update に振り分ける" do
       expect(patch: "/photos/1").to route_to("photos#update", id: "1")
     end
 
-    it "routes to #destroy" do
+    it "#destroy に振り分ける" do
       expect(delete: "/photos/1").to route_to("photos#destroy", id: "1")
     end
 

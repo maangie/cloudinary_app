@@ -9,7 +9,7 @@ RSpec.describe "photos/new", type: :view do
     ))
   end
 
-  it "renders new photo form" do
+  it "写真の新規登録フォームを表示する" do
     render
 
     assert_select "form[action=?][method=?]", photos_path, "post" do

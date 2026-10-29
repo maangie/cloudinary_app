@@ -7,7 +7,7 @@ RSpec.describe "photos/show", type: :view do
     @photo = assign(:photo, create(:photo, title: 'Title', file: file))
   end
 
-  it "renders attributes in <p>" do
+  it "写真の属性を表示する" do
     render
     expect(rendered).to match(/Title/)
     expect(rendered).to match(/pc_engine/)
