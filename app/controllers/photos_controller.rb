@@ -31,10 +31,10 @@ class PhotosController < ApplicationController
         format.html { redirect_to @photo, notice: t(:created, model: 'Photo') }
         format.json { render :show, status: :created, location: @photo }
       else
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_content }
 
         format.json do
-          render json: @photo.errors, status: :unprocessable_entity
+          render json: @photo.errors, status: :unprocessable_content
         end
       end
     end
@@ -48,10 +48,10 @@ class PhotosController < ApplicationController
         format.html { redirect_to @photo, notice: t(:updated, model: 'Photo') }
         format.json { render :show, status: :ok, location: @photo }
       else
-        format.html { render :edit }
+        format.html { render :edit, status: :unprocessable_content }
 
         format.json do
-          render json: @photo.errors, status: :unprocessable_entity
+          render json: @photo.errors, status: :unprocessable_content
         end
       end
     end
@@ -63,7 +63,7 @@ class PhotosController < ApplicationController
     @photo.destroy
     respond_to do |format|
       format.html do
-        redirect_to photos_url, notice: t(:destroyed, model: 'Photo')
+        redirect_to photos_url, notice: t(:destroyed, model: 'Photo'), status: :see_other
       end
 
       format.json { head :no_content }
@@ -79,7 +79,7 @@ class PhotosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the
     # white list through.
     def photo_params
-      p = params.require(:photo).permit(:title, :image)
+      p = params.expect(photo: [:title, :image])
       p[:bytes] = p[:image].size if p[:image]
       p
     end

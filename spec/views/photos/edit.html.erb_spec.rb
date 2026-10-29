@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "photos/edit", type: :view do
   before(:each) do
-    @photo = FactoryGirl.create(:photo)
+    @photo = create(:photo)
   end
 
   it "renders the edit photo form" do

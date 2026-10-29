@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 
-class Photo < ActiveRecord::Base
+class Photo < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validates :title, presence: true, allow_blank: false
