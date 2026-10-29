@@ -10,16 +10,16 @@
 #  updated_at :datetime         not null
 #
 
-require 'support/upload_file'
+require Rails.root.join('spec/support/upload_file')
 
-module UploadFile
-  UPLOAD_FILE = upload_file('pc_engine.png')
-end
-
-FactoryGirl.define do
+FactoryBot.define do
   factory :photo do
-    title FFaker::BaconIpsum.words.join ' '
-    image UploadFile::UPLOAD_FILE
-    bytes UploadFile::UPLOAD_FILE.size
+    transient do
+      file { UploadFile.upload_file('pc_engine.png') }
+    end
+
+    title { FFaker::BaconIpsum.words.join ' ' }
+    image { file }
+    bytes { file.size }
   end
 end

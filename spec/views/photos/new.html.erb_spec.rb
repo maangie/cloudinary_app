@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe "photos/new", type: :view do
   before(:each) do
     assign(:photo, Photo.new(
-      :title => "MyString",
-      :image => "MyString",
-      :bytes => 1
+      title: "MyString",
+      image: "MyString",
+      bytes: 1
     ))
   end
 
-  it "renders new photo form" do
+  it "写真の新規登録フォームを表示する" do
     render
 
     assert_select "form[action=?][method=?]", photos_path, "post" do

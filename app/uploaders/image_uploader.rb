@@ -1,5 +1,4 @@
-# encoding: utf-8
-
+# 写真の画像を Cloudinary にアップロードするアップローダ。
 class ImageUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
@@ -11,8 +10,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   # storage :file
   # storage :fog
 
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
+  # アップロードしたファイルの保存先ディレクトリを返す。
+  # Cloudinary を使うので、実際の保存先には使われない。
+  #
+  # 戻り値:: "uploads/モデル名/カラム名/id" の形の文字列
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
@@ -53,8 +54,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   if Rails.env.test?
+    # Cloudinary 上の ID を返す。テストでは、元のファイル名をそのまま使う。
+    #
+    # 戻り値:: 元のファイル名。ファイルがなければ nil
     def public_id
-      sanitized_file.original_filename if path
+      file.original_filename if path
     end
   end
 end

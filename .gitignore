@@ -1,8 +1,6 @@
 *.rbc
 capybara-*.html
 .rspec
-/log
-/tmp
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
@@ -38,3 +36,13 @@ bower.json
 
 # environment variables
 .env
+
+# Rails 8
+/config/master.key
+/storage/*
+!/storage/.keep
+/tmp/*
+!/tmp/.keep
+/log/*
+!/log/.keep
+.byebug_history

@@ -15,14 +15,14 @@ Ruby on Rails で作られていて、写真の登録・一覧表示・編集・
 
 | 項目 | 内容 |
 |---|---|
-| 言語・フレームワーク | Ruby 2.2.3 / Rails 4.2.4 |
+| 言語・フレームワーク | Ruby 4.0.9 / Rails 8.1.4 |
 | 画像アップロード | carrierwave, cloudinary |
-| 画面 | twitter-bootstrap-rails, simple_form, CoffeeScript, Turbolinks |
+| 画面 | Bootstrap 5（CDN）, simple_form, Propshaft, importmap, Turbo, Stimulus |
 | データベース | 開発・テスト: SQLite3 / 本番: PostgreSQL |
-| 本番サーバ | puma, rails_12factor |
+| 本番サーバ | puma |
 | 環境変数 | dotenv-rails（`.env` を読み込む） |
 | 日本語化 | rails-i18n |
-| テスト | RSpec, FactoryGirl, Capybara, shoulda, SimpleCov |
+| テスト | RSpec, FactoryBot, Capybara, shoulda-matchers, SimpleCov |
 
 ## データモデル
 
@@ -37,11 +37,14 @@ Ruby on Rails で作られていて、写真の登録・一覧表示・編集・
 
 ## セットアップ
 
+Ruby 4.0.9 が必要です。バージョンは `.ruby-version` と `.tool-versions` に書いてあります。
+
 ```bash
 % git clone https://github.com/maangie/cloudinary_app.git
 % cd cloudinary_app
-% bin/bundle install --without=production
-% bin/rake db:migrate
+% bundle config set --local without production
+% bundle install
+% bin/rails db:migrate
 ```
 
 プロジェクト直下に `.env` を作り、Cloudinary の認証情報を書きます。
@@ -71,10 +74,11 @@ CLOUDINARY_API_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxx
 ## テスト
 
 ```bash
-% bin/rspec
+% bundle exec rspec
 ```
 
 テスト用の画像は `spec/fixtures/` にあります。
+テストでは Cloudinary に実際にはアップロードしないので、`.env` がなくても動きます。
 
 ## 主なファイル
 
