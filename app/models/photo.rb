@@ -10,6 +10,9 @@
 #  updated_at :datetime         not null
 #
 
+# 写真。画像は ImageUploader で Cloudinary に保存する。
+#
+# タイトルと画像は必須で、ファイルサイズ（bytes）は 0 より大きくなければならない。
 class Photo < ApplicationRecord
   mount_uploader :image, ImageUploader
 

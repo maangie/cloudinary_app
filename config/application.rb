@@ -18,7 +18,9 @@ require "action_view/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Cloudinary に画像を保存する写真管理アプリ。
 module CloudinaryApp
+  # アプリ全体の設定。
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.1
