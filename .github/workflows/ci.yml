@@ -1,0 +1,36 @@
+# push と PR のたびに RSpec を走らせる CI。
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      RAILS_ENV: test
+      # pg は本番でしか使わないので、CI では入れない。
+      BUNDLE_WITHOUT: production
+    steps:
+      - uses: actions/checkout@v5
+
+      # .ruby-version の Ruby を入れ、gem をキャッシュする。
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: データベースを用意する
+        run: bin/rails db:schema:load
+
+      - name: RSpec を実行する
+        run: bundle exec rspec
