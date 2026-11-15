@@ -22,7 +22,7 @@ jobs:
       # pg は本番でしか使わないので、CI では入れない。
       BUNDLE_WITHOUT: production
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       # .ruby-version の Ruby を入れ、gem をキャッシュする。
       - uses: ruby/setup-ruby@v1
