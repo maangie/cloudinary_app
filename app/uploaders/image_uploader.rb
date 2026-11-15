@@ -2,6 +2,11 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
+  # CarrierWave 3 は、保存の直後に filename が nil だと警告を出す。
+  # Cloudinary 連携は、その確認のあとでアップロード結果を読み直して filename を返すので、警告は誤検知になる。
+  # そのため、この確認は済んだ扱いにする。
+  self.filename_safeguard_checked = true
+
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
