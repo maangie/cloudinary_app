@@ -1,4 +1,4 @@
-# Dependabot で gem の更新 PR を作る設定。
+# Dependabot で gem と GitHub Actions の更新 PR を作る設定。
 version: 2
 updates:
   - package-ecosystem: bundler
@@ -15,3 +15,12 @@ updates:
         update-types:
           - minor
           - patch
+
+  # CI で使う GitHub Actions も更新する。
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "09:00"
+      timezone: Asia/Tokyo
