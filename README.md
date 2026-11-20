@@ -15,7 +15,7 @@ Ruby on Rails で作られていて、写真の登録・一覧表示・編集・
 
 | 項目 | 内容 |
 |---|---|
-| 言語・フレームワーク | Ruby 4.0.9 / Rails 8.1.4 |
+| 言語・フレームワーク | Ruby 4.0.10 / Rails 8.1.4.1 |
 | 画像アップロード | carrierwave, cloudinary |
 | 画面 | Bootstrap 5（CDN）, simple_form, Propshaft, importmap, Turbo, Stimulus |
 | データベース | 開発・テスト: SQLite3 / 本番: PostgreSQL |
@@ -37,7 +37,7 @@ Ruby on Rails で作られていて、写真の登録・一覧表示・編集・
 
 ## セットアップ
 
-Ruby 4.0.9 が必要です。バージョンは `.ruby-version` と `.tool-versions` に書いてあります。
+Ruby 4.0.10 が必要です。バージョンは `.ruby-version` と `.tool-versions` に書いてあります。
 
 ```bash
 % git clone https://github.com/maangie/cloudinary_app.git
